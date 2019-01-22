@@ -1,10 +1,7 @@
 package tests;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -62,6 +59,19 @@ public class Search_Bauer {
         navigation.settingLeftFilters("Бренд","Bauer");
 
         navigation.settingSortingFilter("По цене", "descent");
+
+        buyObject();
+
+        checkBasket("1", "Коньки хоккейные Bauer BTH18 SUPREME 2S", true);
+    }
+
+    @Test
+    public void searchScatesOnProductSearch(){
+        open("");
+
+        $(By.xpath("//input[@data-selenium='product_search_input']")).setValue("Bauer BTH18 SUPREME 2S").pressEnter();
+
+        $(By.xpath("//a[@title='Коньки хоккейные Bauer BTH18 SUPREME 2S']")).click();
 
         buyObject();
 
