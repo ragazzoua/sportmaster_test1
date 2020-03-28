@@ -11,16 +11,12 @@ import java.net.URI;
 public class BrowserDriver {
 
     public void settingBrowserDriver() throws MalformedURLException {
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setBrowserName("chrome");
-        capabilities.setVersion("latest");
-        capabilities.setCapability("enableVNC", true);
-        capabilities.setCapability("enableVideo", false);
+        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
 
+        capabilities.setCapability("enableVNC", true);
         RemoteWebDriver driver = new RemoteWebDriver(
-                URI.create("http://localhost:4444/wd/hub").toURL(),
-                capabilities
-        );
+                URI.create("http://127.0.0.1:4444/wd/hub").toURL(), capabilities);
+
 
         WebDriverRunner.setWebDriver(driver);
 
